@@ -5,7 +5,7 @@ const foreCast = (lat, lon) =>
 {
   fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=cz&units=metric&exclude=minutely,alerts&appid=d185cc724a1b03e7aecc2dfe6d7b4daa`)
   .then(resp => resp.json())
-  .then(data => {console.log(data);createContent(data, 0, 24);})
+  .then(data => {createContent(data, 0, 24); createHeader(data)})
 }
 
 foreCast(weather.lat, weather.lon);
@@ -34,6 +34,96 @@ const secToDate = (data, t, l) => {
 
     return time;
 }
+
+const createHeader = (data) => {
+
+  const dataWeather = data.current;
+
+  document.querySelector(".rightHeader img").src = `http://openweathermap.org/img/w/${dataWeather.weather[0].icon}.png`;
+  newText(".rightHeader div p", secToDate(dataWeather.dt, "d", "short"));
+  newText(".right h1", Math.round(dataWeather.temp));
+  newText(".city", localStorage.getItem("name") + ", " + localStorage.getItem("country"));
+  newText("#feelsLike", "pocitově " + Math.round(dataWeather.feels_like)+ "°C");
+  newText("#sunSet", secToDate(dataWeather.sunset, "h", "short"));
+  
+  const chances = data.hourly.slice(0, 6);
+  
+  const chance = chances.map(function(e){
+    return Math.round(e.temp)
+  })
+  const label = chances.map(function(e){
+    return secToDate(e.dt, "h");
+  })
+  function chartNumberMax(e){
+    return Math.max.apply(null, e);
+  }
+  
+  const options = {legend: false,
+    title:{
+      display:true,
+    },
+    tooltips: {enabled: false,},
+    cornerRadius: 20,
+      title: {
+        display: true,
+        text: ''
+      },
+    maintainAspectRatio: false,
+    scales: {
+        xAxes: [{
+          gridLines: {
+              display: true,
+              tickMarkLength: 0,
+              drawTicks: false,
+              borderDash: [5],
+              color:"#201E4F",
+              offsetGridLines: false
+           },
+           ticks: {
+            max: chartNumberMax(chance),
+            fontSize: 15,
+                fontColor: "#FAFAFB",
+            display: true,
+            padding: 20,
+         },
+           beginAtZero: true   
+        }],
+        yAxes: [{
+          gridLines: {
+              display: false,
+              drawTicks: false,
+           },
+         ticks: {
+                display:true,
+                beginAtZero: true,
+                offsetGridLines:false,
+                drawTicks: false,
+                fontSize: 13,
+                fontColor: "#FAFAFB",
+                callback: function(value, index, values){
+                  return value + '°C';
+                }
+              
+         }
+       }]
+     }}
+  var ctx = document.getElementById('myChart2').getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: label,
+          datasets: [{barPercentage: 0.5,
+            barThickness: 20,
+              data: chance,
+              backgroundColor:["#FA4400","#302E62","#302E62","#302E62","#302E62","#302E62"],
+              borderWidth: 1,
+              
+          }]
+      },
+      responsive: false,
+      options: options
+  });
+  }
 
 const createContent = (data, min, max) => {
 

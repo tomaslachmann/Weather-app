@@ -257,6 +257,67 @@ a {
   background: #100E3B;
   position: relative;
 }
+.landingPage .right .overlay {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.landingPage .right .overlay .rightHeader {
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 5rem;
+  transform: translateX(-20px);
+}
+.landingPage .right .overlay .rightHeader div {
+  display: block;
+}
+.landingPage .right .overlay .rightHeader div h3 {
+  font-size: 2em;
+  font-weight: 300;
+}
+.landingPage .right .overlay .rightHeader div p {
+  color: #85859C;
+}
+.landingPage .right .overlay .city {
+  color: #85859C;
+  font-size: 1.2em;
+  text-align: center;
+}
+.landingPage .right .overlay div {
+  display: inline-flex;
+  justify-content: center;
+}
+.landingPage .right .overlay div h1 {
+  font-size: 7em;
+  font-weight: 400;
+}
+.landingPage .right .overlay div span {
+  font-size: 2em;
+  line-height: 2.5em;
+  font-weight: 200;
+}
+.landingPage .right .overlay div #feelsLike, .landingPage .right .overlay div #sunSet {
+  color: #85859C;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+.landingPage .right .overlay div #feelsLike {
+  padding-right: 2rem;
+  position: relative;
+}
+.landingPage .right .overlay div #feelsLike::after {
+  content: ".";
+  position: absolute;
+  font-size: 3em;
+  top: -0.3em;
+  left: 85%;
+}
+.landingPage .right .overlay .chartRight1 {
+  width: 80%;
+  height: 20rem;
+  margin: auto;
+}
 
 #background-wrap {
   bottom: 0;
