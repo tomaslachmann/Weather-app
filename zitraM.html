@@ -7,56 +7,15 @@
 </head>
 <body>
     <script>
-        let spliceMin = 24;
-        let spliceMax = 48;
+        let spliceMin = 0;
+        let spliceMax = 24;
         let ahoj = "hourly";
-        let den = "zitra";
+        let den = "zítra";
         let activeDot = 0;
         let h = "h";
         </script>
     <div class="landingPage">
-        <div class="left">
-            <div class="head"> 
-                <div class="input-button" id="input">
-                    <i class="fas fa-search"></i>
-                    <div class="status hidden"></div>
-                    <input type="text" id="searchInput" placeholder="Zadejte název místa" autocomplete="off"/>
-                </div>
-                <select>
-                </select>
-                <div class="nadpis">
-                    <span class="light">předpověď</span>
-                    <span class="bold">počasí</span>
-                </div>
-                <div id="searchBtn"></div>
-            </div>
-            <div class="places">   
-            </div>
-            <div class="foreCast">
-                <div class="foreCastHead" id="tomorrow">
-                    <span >dnes</span>
-                    <span class="active">zítra</span>
-                    <span >5 dní</span>
-                    <div class="activeDot"></div>
-                </div>
-                <div class="foreCastBody">
-                    <div class="left">
-                    </div>
-                    <div class="right">
-                        <div class="leftBody"></div>
-                        <div class="middleBody">
-                            <div class="chartLeft">
-                                <canvas id="chartMin"></canvas>
-                            </div>
-                            <div class="chartRight">
-                                <canvas id="chartMax" ></canvas>
-                            </div>
-                        </div>
-                        <div class="rightBody"></div> 
-                    </div>
-                </div>
-            </div>
-        </div>
+   
         <div class="right">
             <div id="background-wrap">
                 <div class="x1">
@@ -83,7 +42,7 @@
                 <div class="rightHeader">
                     <img>
                     <div>
-                        <h3>zítra</h3>
+                        <h3>Zítra</h3>
                         <p></p>
                     </div>
                 </div>
@@ -95,6 +54,38 @@
                 <div>
                     <span id="feelsLike"></span>
                     <span id="sunSet"></span>
+                </div>
+                
+                <div class="foreCast">
+                    <div class="foreCastHead" id="tomorrow">
+                        <a href="predpovedM.html"><span class="active">dnes</span></a>
+                        <a href=zitraM.html><span >zítra</span></a>
+                        <a href="dalsidnyM.html"><span >5 dní</span></a>
+                        <div class="activeDot"></div>
+                    </div>
+                    <div class="foreCastBody">
+                        <div class="left">
+                        </div>
+                        <div class="right">
+                            <div class="leftBody"></div>
+                            <div class="middleBody head">
+                                <div class="places"></div>
+                                    <select></select>
+                                    <div class="input-button" id="input">
+                                        <i class="fas fa-search"></i>
+                                        <div class="status hidden"></div>
+                                        <input type="text" id="searchInput" placeholder="Zadejte název místa" autocomplete="off"/>
+                                    </div>
+                             <div class="chartLeft">
+                                    <canvas id="chartMin"></canvas>
+                                </div>
+                                <div class="chartRight">
+                                    <canvas id="chartMax" ></canvas>
+                                </div>
+                            </div>  
+                            <div class="rightBody"></div> 
+                        </div>
+                    </div>
                 </div>
                 <div class="chartRight1">
                     <canvas id="myChart2"></canvas>

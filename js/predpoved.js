@@ -325,8 +325,8 @@ for (let i = 0; i < dataWeather.length; i++){
     let node = newEl('tr',{class: 'hodiny'},newEl('td',{},newEl('span',{id: 'hodiny'},`${secToDate(dataWeather[i].dt, "h", "short")}`,),newEl('span',{},newEl('img',{class:"raindrop",src: "raindrop.svg"},''),`${Math.round(dataWeather[i].pop * 100)}%`),newEl('img',{ src: `http://openweathermap.org/img/w/${dataWeather[i].weather[0].icon}.png`,alt: "Weather icon"},),),);
     table.appendChild(node);
  
-    let tr_min = newEl('tr',{},newEl('td',{}, `${Math.round(dataWeather[i].feels_like)}°C`), '');
-    let tr_max = newEl('tr',{},newEl('td',{}, `${Math.round(dataWeather[i].temp)}°C`), '');
+    let tr_min = newEl('tr',{},newEl('td',{}, `${Math.round(tempMin[i])}°C`), '');
+    let tr_max = newEl('tr',{},newEl('td',{}, `${Math.round(tempMax[i])}°C`), '');
     temp_min.appendChild(tr_min);
     temp_max.appendChild(tr_max);
 }

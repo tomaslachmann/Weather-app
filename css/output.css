@@ -555,7 +555,7 @@ a {
   top: -90px;
 }
 
-@media (min-width: 375px) {
+@media (min-width: 375px) and (max-width: 1366px) {
   *::-webkit-scrollbar-track {
     -webkit-box-shadow: none !important;
     border-radius: 10px;
@@ -603,7 +603,7 @@ a {
   .landingPage .right .overlay .chartRight1 {
     width: 100%;
     height: 13rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 0;
   }
   .landingPage .right .overlay .foreCast {
@@ -613,11 +613,29 @@ a {
   .landingPage .right .overlay .foreCast .foreCastHead {
     display: block;
     text-align: left;
+    margin-bottom: 2rem;
+    position: relative;
   }
   .landingPage .right .overlay .foreCast .foreCastHead span {
     padding-left: 17%;
     font-size: 1em;
-    font-weight: 700;
+    font-weight: 400;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead .activeDot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+    bottom: -0.3rem;
+    left: 5rem;
+    transition: all 0.5s;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead#tomorrow .activeDot {
+    left: 11.1rem;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead#other .activeDot {
+    left: 17.5rem;
   }
   .landingPage .right .overlay .foreCast .foreCastBody {
     display: flex;
@@ -632,7 +650,7 @@ a {
     display: inline-flex;
   }
   .landingPage .right .overlay .foreCast .foreCastBody .left table tr {
-    margin: 0rem 1rem 0rem 1rem;
+    margin: 0rem 0rem 0rem 1rem;
     background: #1E1D46;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
@@ -666,7 +684,7 @@ a {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     background: #1E1D46;
-    margin: 0rem 1rem 0rem 1rem;
+    margin: 0rem 0rem 0rem 1rem;
     width: 5rem !important;
     border-bottom: solid 2px #697a8f;
     border-left: solid 2px #697a8f;

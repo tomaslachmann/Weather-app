@@ -1,10 +1,10 @@
 
  const mobileActions = () => {
     children.forEach((el) => {
-        el.addEventListener('click', (e) => {
-            e.target.innerHTML == "dnes" ? window.location.replace("predpoved.html")
-          : e.target.innerHTML == "zítra" ? window.location.replace("zitra.html")
-          : window.location.replace("dalsidny.html")  
+        el.addEventListener('touchstart', (e) => {
+            e.target.innerHTML == "dnes" ? window.location.replace("predpovedM.html")
+          : e.target.innerHTML == "zítra" ? window.location.replace("zitraM.html")
+          : window.location.replace("dalsidnyM.html")  
         });
         
       });
