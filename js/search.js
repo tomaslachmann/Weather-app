@@ -27,7 +27,8 @@ const searchCity = (coords, name, country) => {
     localStorage.setItem("coords", JSON.stringify(coords));
     localStorage.setItem("name", name);
     localStorage.setItem("country", country);
-    window.location.replace("predpoved.html");
+    location.toString().includes("index") === true ? window.location.replace("predpoved.html")
+  : location.reload()
   }
 
 const fetchCities = async () => {

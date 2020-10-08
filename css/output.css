@@ -21,9 +21,37 @@ body {
   display: none !important;
 }
 
+.status {
+  background: white;
+  color: #202B5C;
+  padding: 1em;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: inherit;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: none !important;
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #b4bee7;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: #202B5C;
 }
 
 .landingPage {
