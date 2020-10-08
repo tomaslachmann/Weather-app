@@ -1,4 +1,15 @@
 
+ const mobileActions = () => {
+    children.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.target.innerHTML == "dnes" ? window.location.replace("predpoved.html")
+          : e.target.innerHTML == "zítra" ? window.location.replace("zitra.html")
+          : window.location.replace("dalsidny.html")  
+        });
+        
+      });
+ }
+ const webActions = () =>{
 
 const after = document.querySelector('.activeDot');
 const parentHead = document.querySelector(".foreCastHead");
@@ -65,3 +76,7 @@ slider.addEventListener('mousemove', (e) => {
   slider.scrollLeft = scrollLeft - walk;
 });
 
+ }
+
+ /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false ? webActions : mobileActions
+ 
