@@ -1,12 +1,14 @@
 
 const weather = JSON.parse(localStorage.getItem("coords"));
 const images = JSON.parse(localStorage.getItem("saved"));
+const cityName = localStorage.getItem("name");
+const country = localStorage.getItem("country");
 
 const foreCast = (lat, lon) =>
 {
   fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=cz&units=metric&exclude=minutely,alerts&appid=d185cc724a1b03e7aecc2dfe6d7b4daa`)
   .then(resp => resp.json())
-  .then(data => {createContent(data, 0, 24); createHeader(data)})
+  .then(data => {createContent(data, 0, 24); createHeader(data, cityName, country);})
 }
 
 foreCast(weather.lat, weather.lon);
@@ -15,6 +17,41 @@ const option = (data) => {
   let select = document.querySelector("select");
   const opt = newEl('option',{class:'ahoj'},data);
   select.appendChild(opt);
+}
+
+const selW = (city) => {
+  let sel = document.querySelector(".head select");
+  let opts = document.querySelectorAll(".head select option");
+
+  const selWidth = () => {
+    let test = newEl('span',{}, sel.value);
+    test.style.fontSize = sel.style.fontSize + 30 +"px";
+    test.style.position = "absolute";
+    document.querySelector(".landingPage").appendChild(test);
+    sel.style.width = test.offsetWidth + "px";
+    document.querySelector(".landingPage").removeChild(test);
+  }
+  opts.forEach(opt => {opt.value == city ? selWidth() : "nic"});
+  
+  document.querySelector(".head select").addEventListener("change", function(e) {
+    let data = newSave;
+    for (let i = 0; i < data.length; ++i) {
+    if(data[i].City == e.target.value){
+      searchCity(data[i].Coords, data[i].City, data[i].country);
+    }
+   }
+  });
+}
+
+const selectSort = (city) => {
+  const sel = document.querySelector("select")
+  for (let opt, i = 0; opt = sel.options[i]; i++) {
+    
+    if (opt.value == city) {
+        sel.selectedIndex = i;
+        break;
+    }
+}
 }
 
 const secToDate = (data, t, l) => {
@@ -65,8 +102,8 @@ document.querySelector(".places").appendChild(card);
   fetch(url)
     .then(function(response){return response.json();})
     .then(function(response) {
-        var pages = response.query.pages;
-        for (var page in pages) {
+        let pages = response.query.pages;
+        for (let page in pages) {
             card.children[0].children[0].src = pages[page].thumbnail.source;  
         }
     })
@@ -90,7 +127,7 @@ const altSrc = () => {
 const imgHref = () => {
   const places = document.querySelectorAll(".card");
   places.forEach(el => el.addEventListener("click", (e) => {
-      let savedPlaces = JSON.parse(localStorage.getItem("saved"));
+      let savedPlaces = newSave;
         savedPlaces.map(el => {
           if(el.City == e.target.children[1].innerHTML)
           {
@@ -103,16 +140,18 @@ const imgHref = () => {
   );
     }
 
-  const checkImage = (images, n) => {
+  const checkImage = (images, n, city) => {
     const showImage = () => {
         addCity();
-        option(localStorage.getItem("name"));
+        option(city);
       }
     const showImages = (images) => {
       const promises = images.map(img =>{getImages(img.City); option(img.City);});
       Promise.all(promises).then(function() {
       addCity();
       imgHref();
+      selW(cityName);
+      selectSort(cityName);
     })
     }
     const domyslim = (images) => {
@@ -126,14 +165,14 @@ const imgHref = () => {
       : domyslim(images)
   }
 
-const createHeader = (data) => {
+const createHeader = (data, city, country) => {
 
   const dataWeather = data.current;
 
   document.querySelector(".rightHeader img").src = `http://openweathermap.org/img/w/${dataWeather.weather[0].icon}.png`;
   newText(".rightHeader div p", secToDate(dataWeather.dt, "d", "short"));
   newText(".right h1", Math.round(dataWeather.temp));
-  newText(".city", localStorage.getItem("name") + ", " + localStorage.getItem("country"));
+  newText(".city", city + ", " + country);
   newText("#feelsLike", "pocitově " + Math.round(dataWeather.feels_like)+ "°C");
   newText("#sunSet", secToDate(dataWeather.sunset, "h", "short"));
   
@@ -198,8 +237,8 @@ const createHeader = (data) => {
          }
        }]
      }}
-  var ctx = document.getElementById('myChart2').getContext('2d');
-  var myChart = new Chart(ctx, {
+  const ctx = document.getElementById('myChart2').getContext('2d');
+  const myChart = new Chart(ctx, {
       type: 'bar',
       data: {
           labels: label,
@@ -326,5 +365,5 @@ const maxChart = new Chart(ctx1, {
     responsive: false,
     options:options
   });
-  checkImage(images, n);
+  checkImage(images, n, cityName);
 }

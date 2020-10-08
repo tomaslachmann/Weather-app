@@ -2,9 +2,9 @@
 
 
 const saved = {
-   City: localStorage.getItem("name"),
+   City: cityName,
    Coords: JSON.parse(localStorage.getItem("coords")),
-   country: localStorage.getItem("country")
+   country: country
 };
 
 
@@ -21,20 +21,20 @@ let newSave = JSON.parse(localStorage.getItem("saved"));
    
       const firstSave = (data) => {
          localStorage.setItem("saved", JSON.stringify(data));
-          count();
+          count(n);
           location.reload();
           return
       }
       const secSave = (data) => {
          localStorage.setItem("saved", JSON.stringify([data, check]));
-         count();
+         count(n);
          location.reload();
          return
       }
       const newSave = (check, data) => {
          check.push(data);
          localStorage.setItem("saved", JSON.stringify(check));
-          count();
+          count(n);
           location.reload();
           return
       }

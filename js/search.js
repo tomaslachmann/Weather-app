@@ -1,20 +1,26 @@
 let cities;
 let search_word = '';
-let coords;
-let name;
-let country;
+let filterCoords;
+let filterName;
+let filterCountry;
 const placeholder = document.querySelector("#input div");
 const input = document.getElementById("searchInput");
-const n = localStorage.getItem('counter');
+let n = localStorage.getItem('counter');
 
 const count = (n) => {
 
-    const countN = function () {
+    const toNull = (n) => {
+        n = 0;
+        countN(n);
+        }
+    const countN = (n) => {
         n++
         localStorage.setItem("counter", n)
+        console.log(n);
     }
-    n !== null ? countN : n = 0 ? countN : console.log("error")
- 
+    n !== null ? countN(n) : toNull(n)
+
+ return n
 }
 
 const searchCity = (coords, name, country) => {
@@ -43,9 +49,9 @@ const showCities = async (search_word) => {
         
        placeholder.innerText = filtered.name + ", " + filtered.country;
 
-       name = filtered.name;
-        coords = filtered.coord;
-        country = filtered.country;
+       filterName = filtered.name;
+        filterCoords = filtered.coord;
+        filterCountry = filtered.country;
     
 }
 
@@ -62,6 +68,6 @@ input.addEventListener("focusout", function(){
     },1000)
 })
 placeholder.addEventListener("click",function(){
-    searchCity(coords, name, country);
+    searchCity(filterCoords, filterName, filterCountry);
 });
 
