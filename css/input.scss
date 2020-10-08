@@ -213,11 +213,68 @@ a{
             display:grid;
         grid-template-columns: 45% 55%;
         .left {
-            
+            table {
+                color:$textlight;
+                width:100%;
+                padding-top:2rem;
+                padding-left:3rem;
+                tr{
+                    width:100%;
+                     td {
+                    padding:1rem;
+                    width:100%;
+                    display:grid;
+                    grid-template-columns: repeat(3, 1fr);
+                     #hodiny {
+                         color:$anotherblue;
+                         
+                     }
+                     span{
+                        padding-top:.9rem;
+                        font-size: 1.2em;
+                        img {
+                            width: .5em;
+                            height:auto;
+                            margin-right: .5em;
+                           transform:translateY(-2px);
+                        }
+                     }
+                    }
+                }
+            }
         }
         .right {
             background:inherit;
-           
+            display:grid;
+            grid-template-columns: 1fr 45% 1fr;
+            table {
+            padding-top:2rem;
+            td{
+                padding: 1.85rem;
+                color:$asibila;
+                font-size:1.2em;
+            }}
+            .middleBody{
+                display:inline-flex;
+               .chartLeft {
+                   width:50%;
+                   height:inherit;
+               }
+               .chartRight{
+                   width:50%;
+                   display:inline-block;
+               }
+            }
+            .rightBody {
+                table{
+                    tr{
+                        td{
+                            color: $anotherblue;
+                        }
+                    }
+                }
+                
+            }
         }
     }
     }

@@ -189,8 +189,60 @@ a {
   display: grid;
   grid-template-columns: 45% 55%;
 }
+.landingPage .left .foreCast .foreCastBody .left table {
+  color: #949EB7;
+  width: 100%;
+  padding-top: 2rem;
+  padding-left: 3rem;
+}
+.landingPage .left .foreCast .foreCastBody .left table tr {
+  width: 100%;
+}
+.landingPage .left .foreCast .foreCastBody .left table tr td {
+  padding: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.landingPage .left .foreCast .foreCastBody .left table tr td #hodiny {
+  color: #2D3866;
+}
+.landingPage .left .foreCast .foreCastBody .left table tr td span {
+  padding-top: 0.9rem;
+  font-size: 1.2em;
+}
+.landingPage .left .foreCast .foreCastBody .left table tr td span img {
+  width: 0.5em;
+  height: auto;
+  margin-right: 0.5em;
+  transform: translateY(-2px);
+}
 .landingPage .left .foreCast .foreCastBody .right {
   background: inherit;
+  display: grid;
+  grid-template-columns: 1fr 45% 1fr;
+}
+.landingPage .left .foreCast .foreCastBody .right table {
+  padding-top: 2rem;
+}
+.landingPage .left .foreCast .foreCastBody .right table td {
+  padding: 1.85rem;
+  color: #ABB7BF;
+  font-size: 1.2em;
+}
+.landingPage .left .foreCast .foreCastBody .right .middleBody {
+  display: inline-flex;
+}
+.landingPage .left .foreCast .foreCastBody .right .middleBody .chartLeft {
+  width: 50%;
+  height: inherit;
+}
+.landingPage .left .foreCast .foreCastBody .right .middleBody .chartRight {
+  width: 50%;
+  display: inline-block;
+}
+.landingPage .left .foreCast .foreCastBody .right .rightBody table tr td {
+  color: #2D3866;
 }
 .landingPage .right {
   background: #100E3B;
