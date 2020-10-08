@@ -237,9 +237,18 @@ a {
   width: 50%;
   height: inherit;
 }
+.landingPage .left .foreCast .foreCastBody .right .middleBody .chartLeft canvas {
+  width: 100%;
+  transform: rotateY(180deg);
+  background-color: #f2fbff;
+}
 .landingPage .left .foreCast .foreCastBody .right .middleBody .chartRight {
   width: 50%;
   display: inline-block;
+}
+.landingPage .left .foreCast .foreCastBody .right .middleBody .chartRight canvas {
+  width: 100%;
+  background-color: #f2fbff;
 }
 .landingPage .left .foreCast .foreCastBody .right .rightBody table tr td {
   color: #2D3866;
