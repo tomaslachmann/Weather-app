@@ -19,7 +19,7 @@ function najitPolohu() {
     async function search(lat, lon) {
         const result = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=cz&units=metric&appid=d185cc724a1b03e7aecc2dfe6d7b4daa`)
         .then(response => response.json())
-        .then(data => {console.log(data);});
+        .then(data => {searchCity(data.coord, data.name, data.sys.country);});
     }
   
     function error() {
