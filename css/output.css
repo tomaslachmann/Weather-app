@@ -157,7 +157,7 @@ a {
   grid-auto-flow: column;
   padding-left: 4rem;
   margin-bottom: 1rem;
-  overflow-x: scroll;
+  overflow-x: auto;
   padding-top: 2rem;
   position: relative;
 }

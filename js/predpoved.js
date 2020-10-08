@@ -3,12 +3,18 @@ const weather = JSON.parse(localStorage.getItem("coords"));
 const images = JSON.parse(localStorage.getItem("saved"));
 const cityName = localStorage.getItem("name");
 const country = localStorage.getItem("country");
+let dataWeather;
+let tempMax;
+let tempMin;
+let chartDataMax;
+let chartDataMin;
+let temperature;
 
 const foreCast = (lat, lon) =>
 {
   fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=cz&units=metric&exclude=minutely,alerts&appid=d185cc724a1b03e7aecc2dfe6d7b4daa`)
   .then(resp => resp.json())
-  .then(data => {createContent(data, 0, 24); createHeader(data, cityName, country);})
+  .then(data => {createContent(data, spliceMin, spliceMax, ahoj, dataWeather, tempMax, tempMin, chartDataMax, chartDataMin); createHeader(data, cityName, country, den, dataWeather, temperature, tempMax);})
 }
 
 foreCast(weather.lat, weather.lon);
@@ -150,13 +156,15 @@ const imgHref = () => {
       Promise.all(promises).then(function() {
       addCity();
       imgHref();
-      selW(cityName);
-      selectSort(cityName);
+      selW(city);
+      selectSort(city);
     })
+    option(city);
     }
     const domyslim = (images) => {
       getImages(images.City); 
       option(images.City);
+      option(city);
       addCity();
     }
 
@@ -165,15 +173,27 @@ const imgHref = () => {
       : domyslim(images)
   }
 
-const createHeader = (data, city, country) => {
+const createHeader = (data, city, country, day, dataWeather, temperature, tempMax) => {
+ 
+  const dnes = () =>{
+    dataWeather = data.current;
+    temperature = dataWeather.temp;
+    tempMax = dataWeather.feels_like;
+  }
+  const zitra = () => {
+    dataWeather = data.daily[1];
+    temperature = dataWeather.temp.max;
+    tempMax = dataWeather.feels_like.day;
+  }
+  
+  day == "dnes" ? dnes() : zitra();
 
-  const dataWeather = data.current;
 
   document.querySelector(".rightHeader img").src = `http://openweathermap.org/img/w/${dataWeather.weather[0].icon}.png`;
   newText(".rightHeader div p", secToDate(dataWeather.dt, "d", "short"));
-  newText(".right h1", Math.round(dataWeather.temp));
+  newText(".right h1", Math.round(temperature));
   newText(".city", city + ", " + country);
-  newText("#feelsLike", "pocitově " + Math.round(dataWeather.feels_like)+ "°C");
+  newText("#feelsLike", "pocitově " + Math.round(tempMax)+ "°C");
   newText("#sunSet", secToDate(dataWeather.sunset, "h", "short"));
   
   const chances = data.hourly.slice(0, 6);
@@ -255,9 +275,43 @@ const createHeader = (data, city, country) => {
   });
   }
 
-const createContent = (data, min, max) => {
+const createContent = (data, min, max, ahoj, dataWeather, tempMax, tempMin, chartDataMax, chartDataMin) => {
 
-const dataWeather = data.hourly.slice(min, max);
+  const hodinove = () => {
+    dataWeather = data.hourly.slice(min, max);
+    tempMax = dataWeather.map(function(e){
+      return e.temp;
+    });
+    tempMin = dataWeather.map(function(e){
+      return e.feels_like;
+    });
+    chartDataMax = dataWeather.map(function(e){
+      return Math.round(e.temp);
+  });
+  chartDataMin = dataWeather.map(function(e){
+    return Math.round(e.feels_like);
+  });
+  }
+
+  const denne = () => {
+    dataWeather = data.daily.slice(min,max)
+    tempMax = dataWeather.map(function(e){
+      return e.temp.max;
+    });
+    tempMin = dataWeather.map(function(e){
+      return e.feels_like.day;
+    });
+    chartDataMax = dataWeather.map(function(e){
+      return Math.round(e.temp.max);
+  });
+  chartDataMin = dataWeather.map(function(e){
+    return Math.round(e.feels_like.day);
+  });
+  }
+
+  ahoj == "hourly" ? hodinove() 
+  : denne();
+
 
 const table = newEl('table',{ class: 'table'},'');
 const temp_min = newEl('table',{class: 'tableLeft'},'');
@@ -276,13 +330,6 @@ for (let i = 0; i < dataWeather.length; i++){
     temp_min.appendChild(tr_min);
     temp_max.appendChild(tr_max);
 }
-const chartDataMax = dataWeather.map(function(e){
-  return Math.round(e.temp);
-});
-
-const chartDataMin = dataWeather.map(function(e){
-return Math.round(e.feels_like);
-});
 
 const chartNumberMax = (e) => {
   return Math.max.apply(null, e);

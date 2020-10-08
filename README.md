@@ -1,4 +1,4 @@
 # Weather-app
 
 todo:
-vytvořit js soubory s obsahem, udělat aplikaci responsivní, animace atd
+přidat obsah k dalším dnům, responsivnost, animace
