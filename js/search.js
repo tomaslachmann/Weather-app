@@ -5,7 +5,17 @@ let name;
 let country;
 const placeholder = document.querySelector("#input div");
 const input = document.getElementById("searchInput");
+const n = localStorage.getItem('counter');
 
+const count = (n) => {
+
+    const countN = function () {
+        n++
+        localStorage.setItem("counter", n)
+    }
+    n !== null ? countN : n = 0 ? countN : console.log("error")
+ 
+}
 
 const searchCity = (coords, name, country) => {
     localStorage.setItem("coords", JSON.stringify(coords));

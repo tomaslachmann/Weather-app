@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 * {
   box-sizing: border-box;
@@ -150,6 +151,91 @@ a {
 .landingPage .left .places {
   height: 20rem;
   width: 100%;
+  display: grid;
+  grid-auto-columns: 10rem;
+  grid-gap: 2rem;
+  grid-auto-flow: column;
+  padding-left: 4rem;
+  margin-bottom: 1rem;
+  overflow-x: scroll;
+  padding-top: 2rem;
+  position: relative;
+}
+.landingPage .left .places .card {
+  height: calc(100% - 1rem);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  background: transparent;
+  border-radius: 15px;
+  cursor: pointer;
+  filter: drop-shadow(0 0.5rem 0.75rem rgba(153, 153, 153, 0.411));
+}
+.landingPage .left .places .card .thumbnail {
+  overflow: hidden;
+  height: 80%;
+  border-radius: 15px;
+  margin-bottom: 0.5rem;
+  background: #f2fbff;
+  pointer-events: none;
+}
+.landingPage .left .places .card .thumbnail img {
+  pointer-events: none;
+  height: 100%;
+  width: auto;
+}
+.landingPage .left .places .card .cityName {
+  font-size: 1.1em;
+  color: #202B5C;
+  background: transparent;
+}
+.landingPage .left .places .card:hover {
+  transform: scale(1.05) translateY(-1rem);
+}
+.landingPage .left .places .addCity {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.landingPage .left .places .addCity:hover {
+  background: #dbe2f3;
+}
+.landingPage .left .places #thumbnail {
+  overflow: hidden;
+  height: 80%;
+  border-radius: 15px;
+}
+.landingPage .left .places .addCity {
+  height: 76% !important;
+  border: 2px solid #100E3B;
+  position: relative;
+}
+.landingPage .left .places .addCity::before {
+  position: absolute;
+  top: 10%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "＋";
+  /* use the hex value here... */
+  font-size: 50px;
+  color: #100E3B;
+  line-height: 100px;
+  text-align: center;
+  font-weight: 300;
+}
+.landingPage .left .places .addCity::after {
+  position: absolute;
+  top: 35%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "Přidat město";
+  /* use the hex value here... */
+  font-size: 1.2em;
+  color: #100E3B;
+  line-height: 100px;
+  text-align: center;
+  font-weight: 500;
 }
 .landingPage .left .foreCast {
   width: 100%;

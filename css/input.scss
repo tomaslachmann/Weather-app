@@ -168,6 +168,89 @@ a{
     .places{
        height:20rem;
        width:100%;
+       display:grid;
+       grid-auto-columns: 10rem;
+       grid-gap: 2rem;
+       grid-auto-flow: column;
+       padding-left:4rem;
+       margin-bottom: 1rem;
+       overflow-x: scroll; 
+       padding-top:2rem;
+       position:relative;
+       .card {
+           height:calc(100% - 1rem);
+           overflow: hidden;
+           text-align: center;
+           transition: transform .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+           background:transparent;
+           border-radius:15px;
+           cursor: pointer;
+           filter: drop-shadow(0 0.5rem 0.75rem rgba(153, 153, 153, 0.411));
+       .thumbnail{
+            overflow: hidden;
+            height:80%;
+            border-radius:15px;
+            margin-bottom:0.5rem;
+            background:$white;
+            pointer-events: none;
+            img{
+                pointer-events: none;
+                height:100%;
+                width:auto;
+            }
+        }
+        .cityName {
+            font-size:1.1em;
+            color:$textBlue;
+            background:transparent;
+        }
+       }
+       .card:hover {
+           transform:scale(1.05) translateY(-1rem);
+       }
+       .addCity{
+           cursor: pointer;
+           transition: all .5s ease-in-out;
+       }
+       .addCity:hover{
+        background: #dbe2f3;
+    }
+       #thumbnail{
+        overflow: hidden;
+        height:80%;
+        border-radius:15px;
+    }
+       .addCity {
+           height:76% !important;
+           border: 2px solid $darkBlue;
+           position:relative;
+       }
+       .addCity::before{
+        position: absolute;
+        top: 10%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "\ff0b"; /* use the hex value here... */
+        font-size: 50px; 
+        color: $darkBlue;
+        line-height: 100px;
+        text-align: center;
+        font-weight: 300;
+       }
+       .addCity::after{
+        position: absolute;
+        top: 35%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "Přidat město"; /* use the hex value here... */
+        font-size: 1.2em; 
+        color: $darkBlue;
+        line-height: 100px;
+        text-align: center;
+        font-weight: 500;
+       }
     }
     .foreCast{
         width:100%;
