@@ -1,14 +1,4 @@
 
- const mobileActions = () => {
-    children.forEach((el) => {
-        el.addEventListener('touchstart', (e) => {
-            e.target.innerHTML == "dnes" ? window.location.replace("predpovedM.html")
-          : e.target.innerHTML == "zítra" ? window.location.replace("zitraM.html")
-          : window.location.replace("dalsidnyM.html")  
-        });
-        
-      });
- }
  const webActions = () =>{
 
 const after = document.querySelector('.activeDot');
@@ -78,5 +68,5 @@ slider.addEventListener('mousemove', (e) => {
 
  }
 
- /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false ? webActions : mobileActions
+ /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false ? webActions() : false
  

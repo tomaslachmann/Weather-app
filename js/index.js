@@ -1,4 +1,4 @@
-
+checkMobile("index", "index");
 async function randomCity() 
 {
   let response = await fetch(`city.json`);

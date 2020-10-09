@@ -24,11 +24,18 @@ const count = (n) => {
 }
 
 const searchCity = (coords, name, country) => {
+    const webS = () => {
+        location.toString().includes("index") === true ? window.location.replace("predpoved.html")
+        : location.reload()
+    }
+    const mS = () => {
+        location.toString().includes("index") === true ? window.location.replace("predpovedM.html")
+        : location.reload()
+    }
     localStorage.setItem("coords", JSON.stringify(coords));
     localStorage.setItem("name", name);
     localStorage.setItem("country", country);
-    location.toString().includes("index") === true ? window.location.replace("predpoved.html")
-  : location.reload()
+    checkFirst() == true ? mS() : webS();
   }
 
 const fetchCities = async () => {

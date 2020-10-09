@@ -555,7 +555,7 @@ a {
   top: -90px;
 }
 
-@media (min-width: 375px) and (max-width: 1366px) {
+@media (min-width: 375px) and (max-width: 767px) {
   *::-webkit-scrollbar-track {
     -webkit-box-shadow: none !important;
     border-radius: 10px;
@@ -572,9 +572,12 @@ a {
     border-radius: 10px;
   }
 
-  /* Handle on hover */
   *::-webkit-scrollbar-thumb:hover {
     background: #202B5C;
+  }
+
+  #background-wrap {
+    z-index: -1;
   }
 
   .landingPage {
@@ -599,6 +602,12 @@ a {
   }
   .landingPage .right .middleBody {
     display: none !important;
+  }
+  .landingPage .right .overlay i {
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+    font-size: 1.5em;
   }
   .landingPage .right .overlay .chartRight1 {
     width: 100%;
@@ -636,6 +645,200 @@ a {
   }
   .landingPage .right .overlay .foreCast .foreCastHead#other .activeDot {
     left: 17.5rem;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody#other .left table tr td #hodiny {
+    font-size: 1em;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left {
+    display: block;
+    overflow: visible;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left table {
+    display: inline-flex;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left table tr {
+    margin: 0rem 0rem 0rem 1rem;
+    background: #1E1D46;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 5rem !important;
+    border-left: solid 2px #697a8f;
+    border-right: solid 2px #697a8f;
+    border-top: solid 2px #697a8f;
+    padding-top: 10px;
+    text-align: center;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left table tr td span:last-of-type {
+    display: none;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left table tr td img {
+    width: 2em;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .left table tr td span {
+    font-size: 1.5em;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .right {
+    display: block;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .right .leftBody {
+    display: none;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .right .rightBody table {
+    display: inline-flex;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .right .rightBody table tr {
+    transform: translateY(-2.5px);
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    background: #1E1D46;
+    margin: 0rem 0rem 0rem 1rem;
+    width: 5rem !important;
+    border-bottom: solid 2px #697a8f;
+    border-left: solid 2px #697a8f;
+    border-right: solid 2px #697a8f;
+    display: flex;
+    padding-bottom: 10px;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody .right .rightBody table tr td {
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center !important;
+    width: 100%;
+  }
+  .landingPage .left {
+    overflow: auto;
+    height: 100%;
+  }
+  .landingPage .left .index .head .nadpis {
+    text-align: center;
+    color: #f2fbff;
+  }
+  .landingPage .left .index .head .nadpis p {
+    padding-top: 2rem;
+    font-size: 0.4em;
+  }
+  .landingPage .left .index .head #input {
+    width: 20rem;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+  .landingPage .left .index .head #position {
+    width: 20rem;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  *::-webkit-scrollbar-track {
+    -webkit-box-shadow: none !important;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0;
+    background-color: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #b4bee7;
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #202B5C;
+  }
+
+  .landingPage {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    position: relative;
+  }
+  .landingPage #background-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+    background: #100E3B;
+  }
+  .landingPage .right {
+    width: 100%;
+    height: 100%;
+  }
+  .landingPage .right #background-wrap {
+    z-index: 0;
+  }
+  .landingPage .right .middleBody {
+    display: none !important;
+  }
+  .landingPage .right .overlay i {
+    position: absolute;
+    top: 4rem;
+    left: 2rem;
+    font-size: 1.5em;
+  }
+  .landingPage .right .overlay .rightHeader {
+    margin-top: 10rem;
+  }
+  .landingPage .right .overlay .chartRight1 {
+    width: 100%;
+    height: 20rem;
+    margin-top: auto;
+    margin-bottom: 2rem;
+  }
+  .landingPage .right .overlay .foreCast {
+    display: flex;
+    flex-direction: column;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody#other .left table tr td #hodiny {
+    font-size: 1em;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead {
+    display: block;
+    text-align: left;
+    margin-bottom: 2rem;
+    position: relative;
+    display: flex;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead span {
+    margin-left: 5rem;
+    margin-right: 5rem;
+    font-size: 1em;
+    font-weight: 400;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead .activeDot {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: white;
+    bottom: -0.3rem;
+    left: 11.7rem;
+    transition: all 0.5s;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead#tomorrow .activeDot {
+    left: 23.8rem;
+  }
+  .landingPage .right .overlay .foreCast .foreCastHead#other .activeDot {
+    left: 35.9rem;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody#other .left .table tr {
+    margin: 0 2rem 0 2.4rem;
+  }
+  .landingPage .right .overlay .foreCast .foreCastBody#other .right table tr {
+    margin: 0 2rem 0 2.4rem;
   }
   .landingPage .right .overlay .foreCast .foreCastBody {
     display: flex;
