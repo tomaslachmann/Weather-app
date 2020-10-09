@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Weather-app
 
 Weather-app je webová aplikace na předpověď počasí.
@@ -32,3 +33,6 @@ redirection.js je soubor, který vás přesměruje na mobilní verzi, pokud jste
 
 (responsivnost je pouze na ipad a iphone X)
 
+=======
+# Weather-app
+>>>>>>> bff2a552a73dc5a955c1bb967a2d08e7e0b85f14
